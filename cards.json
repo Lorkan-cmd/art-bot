@@ -1,0 +1,280 @@
+[
+  {
+    "id": 1,
+    "name": "Чибик",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_1.jpg",
+    "rarity": "legendary",
+    "category": "Чиби",
+    "description": "пока не придумал"
+  },
+  {
+    "id": 6,
+    "name": "Арт",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_6.jpg",
+    "rarity": "common",
+    "category": "арт",
+    "description": ""
+  },
+  {
+    "id": 8,
+    "name": "Tiger Paws",
+    "artist": "@PMMGLO",
+    "filename": "card_8.jpg",
+    "rarity": "rare",
+    "category": "арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 9,
+    "name": "Pink Riot",
+    "artist": "@PMMGLO",
+    "filename": "card_9.jpg",
+    "rarity": "common",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 10,
+    "name": "Lime Chef",
+    "artist": "@PMMGLO",
+    "filename": "card_10.jpg",
+    "rarity": "rare",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 11,
+    "name": "Sugar Rush",
+    "artist": "@PMMGLO",
+    "filename": "card_11.jpg",
+    "rarity": "epic",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 12,
+    "name": "Honey Hug",
+    "artist": "@PMMGLO",
+    "filename": "card_12.jpg",
+    "rarity": "rare",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 13,
+    "name": "Муу Кусоноки",
+    "artist": "@raider2026",
+    "filename": "card_13.jpg",
+    "rarity": "common",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 14,
+    "name": "Сэм",
+    "artist": "@raider2026",
+    "filename": "card_14.jpg",
+    "rarity": "rare",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 15,
+    "name": "Сэм и Лиз",
+    "artist": "@raider2026",
+    "filename": "card_15.jpg",
+    "rarity": "epic",
+    "category": "DUO",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 16,
+    "name": "Секретный агент",
+    "artist": "@raider2026",
+    "filename": "card_16.jpg",
+    "rarity": "legendary",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 17,
+    "name": "Старшая Медсестра",
+    "artist": "@raider2026",
+    "filename": "card_17.jpg",
+    "rarity": "epic",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 18,
+    "name": "Секретарь",
+    "artist": "@raider2026",
+    "filename": "card_18.jpg",
+    "rarity": "common",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 20,
+    "name": "Лиз",
+    "artist": "@raider2026",
+    "filename": "card_20.jpg",
+    "rarity": "common",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 21,
+    "name": "Тайлер Джозеф",
+    "artist": "@raider2026",
+    "filename": "card_21.jpg",
+    "rarity": "legendary",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 22,
+    "name": "Рон и Рэттью",
+    "artist": "@raider2026",
+    "filename": "card_22.jpg",
+    "rarity": "rare",
+    "category": "DUO",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 23,
+    "name": "Ноуки",
+    "artist": "@raider2026",
+    "filename": "card_23.jpg",
+    "rarity": "common",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 24,
+    "name": "Пушистые формы",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_24.jpg",
+    "rarity": "secret",
+    "category": "strawberry",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 25,
+    "name": "Новое начало",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_25.jpg",
+    "rarity": "legendary",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 26,
+    "name": "Последняя исповедь",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_26.jpg",
+    "rarity": "rare",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 27,
+    "name": "Серый день",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_27.jpg",
+    "rarity": "common",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 28,
+    "name": "Скучающий трон",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_28.jpg",
+    "rarity": "epic",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 29,
+    "name": "Пасмурно",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_29.jpg",
+    "rarity": "rare",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 30,
+    "name": "Последняя молитва",
+    "artist": "https://t.me/DiaRwXDart",
+    "filename": "card_30.jpg",
+    "rarity": "rare",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 31,
+    "name": "Sam",
+    "artist": "@raider2026",
+    "filename": "card_31.jpg",
+    "rarity": "epic",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 32,
+    "name": "Сердитый мальчик",
+    "artist": "https://t.me/myWellSdiOk",
+    "filename": "card_32.jpg",
+    "rarity": "legendary",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 33,
+    "name": "Мальчик в очках",
+    "artist": "https://t.me/myWellSdiOk",
+    "filename": "card_33.jpg",
+    "rarity": "rare",
+    "category": "Портрет",
+    "description": "",
+    "season_tag": null
+  },
+  {
+    "id": 34,
+    "name": "Недовольный взгляд",
+    "artist": "Аноним",
+    "filename": "card_34.jpg",
+    "rarity": "rare",
+    "category": "Арт",
+    "description": "",
+    "season_tag": null
+  }
+]
