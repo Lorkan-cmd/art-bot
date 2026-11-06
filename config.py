@@ -1,8 +1,15 @@
 import os
 
+# Проверяем, запущен ли бот на Railway с Volume
+if os.path.exists("/app/data"):
+    DATABASE_PATH = "/app/data/art_collector.db"
+    CARDS_FOLDER = "/app/data/cards"
+else:
+    DATABASE_PATH = "art_collector.db"
+    CARDS_FOLDER = "cards"
+
 BOT_TOKEN = "8912673889:AAEkd6SlbKSm0dG5oXXHvIa1aTS9Qm3lLGE"
 ADMIN_IDS = [6782892398]
-DATABASE_PATH = "art_collector.db"
 import os
 CARD_COOLDOWN_HOURS = 4
 START_COINS = 100
@@ -18,7 +25,7 @@ RARITIES = {
     "mythical": {"chance": 0.01, "color": "🟣✨", "multiplier": 500}  # НОВАЯ РЕДКОСТЬ!
 }
 
-CARDS_FOLDER = "cards"
+
 CARDS_JSON = "cards.json"
 
 # Streak-система
