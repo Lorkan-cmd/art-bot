@@ -3964,28 +3964,39 @@ async def merchant_buy_item(callback: types.CallbackQuery):
     if not callback.from_user:
         return
     await callback.answer()
-
+    
+    # ✅ ИСПРАВЛЕНИЕ: правильно парсим ключ с подчеркиваниями
+    data_part = callback.data.replace("merchant_buy_item_", "")
+    parts = data_part.split("_")
+    
     try:
-        parts = callback.data.replace("merchant_buy_item_", "").split("_")
-        item_key = parts[0]
-        price = int(parts[1])
+        # Цена всегда последний элемент
+        price = int(parts[-1])
+        # Ключ — это всё, кроме последнего элемента, склеенное обратно через "_"
+        item_key = "_".join(parts[:-1])
     except (ValueError, IndexError):
-        await callback.message.answer("Ошибка! Попробуй ещё раз.")
+        await callback.message.answer("Ошибка формата данных! Попробуй ещё раз.")
         return
-
+    
+    # ✅ ПРОВЕРКА: существует ли предмет вообще
+    if item_key not in SHOP_ITEMS:
+        await callback.message.answer(f"Предмет '{item_key}' не найден в магазине!")
+        return
+    
     user_coins = await get_user_coins(callback.from_user.id)
     if user_coins < price:
         await callback.message.answer(f"Недостаточно монет! Нужно {price}, у тебя {user_coins}")
         return
-
-    await update_coins(callback.from_user.id, -price)
+    
+    # ✅ СНАЧАЛА добавляем предмет, ПОТОМ списываем монеты (если что-то упадёт — деньги останутся)
     await add_item(callback.from_user.id, item_key, 1)
-
+    await update_coins(callback.from_user.id, -price)
+    
     item = SHOP_ITEMS.get(item_key)
     item_name = item['name'] if item else item_key
-
     await callback.message.answer(
-        f"✅ Ты купил {item_name} у торговца!\n\n"
+        f"✅ Ты купил {item_name} у торговца!
+"
         f"Предмет добавлен в инвентарь.",
         reply_markup=expedition_result_keyboard()
     )
@@ -3995,49 +4006,60 @@ async def merchant_buy_case(callback: types.CallbackQuery, state: FSMContext):
     if not callback.from_user:
         return
     await callback.answer()
-
+    
+    # ✅ ИСПРАВЛЕНИЕ: правильно парсим ключ с подчеркиваниями
+    data_part = callback.data.replace("merchant_buy_case_", "")
+    parts = data_part.split("_")
+    
     try:
-        parts = callback.data.replace("merchant_buy_case_", "").split("_")
-        case_key = parts[0]
-        price = int(parts[1])
+        # Цена всегда последний элемент
+        price = int(parts[-1])
+        # Ключ — это всё, кроме последнего элемента, склеенное обратно через "_"
+        case_key = "_".join(parts[:-1])
     except (ValueError, IndexError):
-        await callback.message.answer("Ошибка! Попробуй ещё раз.")
+        await callback.message.answer("Ошибка формата данных! Попробуй ещё раз.")
         return
-
+    
+    # ✅ ПРОВЕРКА: существует ли кейс вообще
+    if case_key not in CASES:
+        await callback.message.answer(f"Кейс '{case_key}' не найден!")
+        return
+    
     user_coins = await get_user_coins(callback.from_user.id)
     if user_coins < price:
         await callback.message.answer(f"Недостаточно монет! Нужно {price}, у тебя {user_coins}")
         return
-
+    
     await update_coins(callback.from_user.id, -price)
-
     result, error = await open_case(callback.from_user.id, case_key)
-
     if error:
+        # Возвращаем деньги, если кейс не открылся
         await update_coins(callback.from_user.id, price)
         await callback.message.answer(f"Ошибка: {error}")
         return
-
-    text = f"🎉 Ты купил кейс у торговца!\n\n"
-
+    
+    text = f"🎉 Ты купил кейс у торговца!
+"
     if result.get("cards"):
-        text += f"🎴 Полученные карточки:\n"
+        text += f"🎴 Полученные карточки:
+"
         for card in result["cards"]:
             card_id = card[0]
             name = card[1]
             rarity = card[4]
-            from config import RARITIES
-            color = RARITIES.get(rarity, {}).get("color", "⚪")
-            text += f"  {color} {name} (#{card_id})\n"
-        text += "\n"
-
+            color = get_rarity_color(rarity)
+            text += f"  {color} {name} (#{card_id})
+"
+        text += "
+"
     if result.get("items"):
-        text += f"📦 Полученные предметы:\n"
+        text += f"📦 Полученные предметы:
+"
         for item_key in result["items"]:
             item = SHOP_ITEMS.get(item_key)
             if item:
-                text += f"  • {item['name']}\n"
-
+                text += f"  • {item['name']}
+"
     await callback.message.answer(text, reply_markup=expedition_result_keyboard())
 
 
