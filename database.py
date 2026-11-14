@@ -1160,21 +1160,18 @@ async def open_case(user_id, case_key):
 async def use_skip(user_id):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT quantity FROM user_items WHERE user_id = ? AND item_key = 'skip'",
-                   (user_id,))
+    cursor.execute("SELECT quantity FROM user_items WHERE user_id = ? AND item_key = 'skip'", (user_id,))
     result = cursor.fetchone()
     if not result or result[0] <= 0:
         conn.close()
         return False, "У тебя нет пропусков!"
-    cursor.execute("UPDATE user_items SET quantity = quantity - 1 WHERE user_id = ? AND item_key = 'skip'",
-                   (user_id,))
-    cursor.execute("DELETE FROM user_items WHERE user_id = ? AND item_key = 'skip' AND quantity <= 0",
-                   (user_id,))
-
+    
+    cursor.execute("UPDATE user_items SET quantity = quantity - 1 WHERE user_id = ? AND item_key = 'skip'", (user_id,))
+    cursor.execute("DELETE FROM user_items WHERE user_id = ? AND item_key = 'skip' AND quantity <= 0", (user_id,))
+    
     fake_time = (datetime.now() - timedelta(hours=24)).isoformat()
-    cursor.execute("UPDATE users SET last_card_time = ? WHERE user_id = ?",
-                   (fake_time, user_id))
-
+    cursor.execute("UPDATE users SET last_card_time = ? WHERE user_id = ?", (fake_time, user_id))
+    
     conn.commit()
     conn.close()
     return True, "Пропуск использован! Кулдаун полностью сброшен."
