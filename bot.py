@@ -3964,39 +3964,27 @@ async def merchant_buy_item(callback: types.CallbackQuery):
     if not callback.from_user:
         return
     await callback.answer()
-    
-    # ✅ ИСПРАВЛЕНИЕ: правильно парсим ключ с подчеркиваниями
     data_part = callback.data.replace("merchant_buy_item_", "")
     parts = data_part.split("_")
-    
     try:
-        # Цена всегда последний элемент
         price = int(parts[-1])
-        # Ключ — это всё, кроме последнего элемента, склеенное обратно через "_"
         item_key = "_".join(parts[:-1])
     except (ValueError, IndexError):
         await callback.message.answer("Ошибка формата данных! Попробуй ещё раз.")
         return
-    
-    # ✅ ПРОВЕРКА: существует ли предмет вообще
     if item_key not in SHOP_ITEMS:
         await callback.message.answer(f"Предмет '{item_key}' не найден в магазине!")
         return
-    
     user_coins = await get_user_coins(callback.from_user.id)
     if user_coins < price:
         await callback.message.answer(f"Недостаточно монет! Нужно {price}, у тебя {user_coins}")
         return
-    
-    # ✅ СНАЧАЛА добавляем предмет, ПОТОМ списываем монеты (если что-то упадёт — деньги останутся)
     await add_item(callback.from_user.id, item_key, 1)
     await update_coins(callback.from_user.id, -price)
-    
     item = SHOP_ITEMS.get(item_key)
     item_name = item['name'] if item else item_key
     await callback.message.answer(
-        f"✅ Ты купил {item_name} у торговца!
-"
+        f"✅ Ты купил {item_name} у торговца!\n"
         f"Предмет добавлен в инвентарь.",
         reply_markup=expedition_result_keyboard()
     )
