@@ -1169,17 +1169,14 @@ async def use_skip(user_id):
     cursor.execute("UPDATE user_items SET quantity = quantity - 1 WHERE user_id = ? AND item_key = 'skip'", (user_id,))
     cursor.execute("DELETE FROM user_items WHERE user_id = ? AND item_key = 'skip' AND quantity <= 0", (user_id,))
     
-    # ✅ ИСПРАВЛЕНИЕ: ставим время на 365 дней назад
-    # Это гарантирует, что кулдаун будет полностью сброшен
-    # независимо от любых модификаторов (таймеры, золотые таймеры и т.д.)
-    fake_time = (datetime.now() - timedelta(days=365)).isoformat()
+    # ✅ ИСПРАВЛЕНИЕ: используем фиксированную дату 2000 года
+    # Это гарантирует корректный парсинг и полный сброс кулдауна
+    fake_time = datetime(2000, 1, 1).isoformat()
     cursor.execute("UPDATE users SET last_card_time = ? WHERE user_id = ?", (fake_time, user_id))
     
     conn.commit()
     conn.close()
     return True, "Пропуск использован! Кулдаун полностью сброшен."
-
-
 async def get_extra_claims(user_id):
     conn = get_connection()
     cursor = conn.cursor()
